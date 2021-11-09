@@ -4,7 +4,7 @@ Helper functions to simplify common AWS DynamoDB operations. Requires [`boto3`](
 
 - Get All items: Get all items in a table with `get_all_items()`.
 
-- Get Table Item Counts: Get the number of items in a table with `count_all_items()`. DynamoDB table counts update approximately every 6 hours. `dynamodb_client.describe_table()` can return old counts which can cause problems.
+- Get Table Item Counts: Calculate the number of items in a table with `count_all_items()`. DynamoDB table counts update approximately every 6 hours. `dynamodb_client.describe_table()` can return old counts which can cause problems.
 
 ---
 
