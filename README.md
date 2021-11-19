@@ -6,7 +6,7 @@ Helper functions to simplify common AWS DynamoDB operations. Requires [`boto3`](
 
 - Get Table Item Counts: Calculate the number of items in a table with `count_all_items()`. DynamoDB table counts update approximately every 6 hours. `dynamodb_client.describe_table()` can return old counts which can cause problems.
 
-- Create a table: Create a table simply with `create_table`. Look at the notes below for more details.
+- Create a table: Create a table simply with `create_table`. (See notes below)
 
 ---
 
