@@ -14,14 +14,23 @@ Helper functions to simplify common AWS DynamoDB operations. Requires [`boto3`](
 
 ```
 import easy_dynamodb as edb
-print(edb.get_all_items(table_name="my-table"))
+items = edb.get_all_items(table_name="my_table")
 ```
 
 #### Count all items in a table
 
 ```
 import easy_dynamodb as edb
-print(edb.count_all_items(table_name="my-table"))
+item_count = edb.count_all_items(table_name="my_table")
+```
+
+### Create a table
+
+```
+import easy_dynamodb as edb
+
+edb.create_table("my_table")
+edb.create_table("my_second_table", hash_key="key1", range_key="key2")
 ```
 
 ---
@@ -33,3 +42,7 @@ Q: Why does `count_all_items_alt()` exist?
 A: Curiosity. I wanted to check if there are inconsistencies with the `Count` provided in request results.
 
 ---
+
+### TODO
+
+- automatic marshalling
