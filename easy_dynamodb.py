@@ -77,36 +77,39 @@ def count_all_items_alt(table_name, last_key=None, counter=0):
 #====================================================================================
 
 
-def create_basic_table(table_name,
+def create_table(table_name,
                        hash_key="hash_key",
                        range_key="range_key",
                        read_capacity_units=5,
                        write_capacity_units=5):
     return dynamodb_client.create_table(TableName=table_name,
-                                 KeySchema=[
-                                     {
-                                         'AttributeName': hash_key,
-                                         'KeyType': 'HASH'
-                                     },
-                                     {
-                                         'AttributeName': range_key,
-                                         'KeyType': 'RANGE'
-                                     },
-                                 ],
-                                 AttributeDefinitions=[
-                                     {
-                                         'AttributeName': hash_key,
-                                         'AttributeType': 'S'
-                                     },
-                                     {
-                                         'AttributeName': range_key,
-                                         'AttributeType': 'S'
-                                     },
-                                 ],
-                                 ProvisionedThroughput={
-                                     'ReadCapacityUnits': read_capacity_units,
-                                     'WriteCapacityUnits': write_capacity_units
-                                 })
+                                        KeySchema=[
+                                            {
+                                                'AttributeName': hash_key,
+                                                'KeyType': 'HASH'
+                                            },
+                                            {
+                                                'AttributeName': range_key,
+                                                'KeyType': 'RANGE'
+                                            },
+                                        ],
+                                        AttributeDefinitions=[
+                                            {
+                                                'AttributeName': hash_key,
+                                                'AttributeType': 'S'
+                                            },
+                                            {
+                                                'AttributeName': range_key,
+                                                'AttributeType': 'S'
+                                            },
+                                        ],
+                                        ProvisionedThroughput={
+                                            'ReadCapacityUnits':
+                                            read_capacity_units,
+                                            'WriteCapacityUnits':
+                                            write_capacity_units
+                                        })
 
 
 #====================================================================================
+
