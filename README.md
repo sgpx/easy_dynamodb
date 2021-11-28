@@ -1,6 +1,6 @@
 # easy_dynamodb
 
-Helper functions to simplify common AWS DynamoDB operations. Requires [`boto3`](https://pypi.org/project/boto3/).
+Simple and easy-to-use module for AWS DynamoDB. Simplify common AWS DynamoDB operations with helpful wrappers. Requires [`boto3`](https://pypi.org/project/boto3/).
 
 - Get All items: Get all items in a table with `get_all_items()`.
 
@@ -67,4 +67,4 @@ A: Curiosity. I wanted to check if there are inconsistencies with the `Count` pr
 
 ### notes
 
-- `create_table` creates a table with a default hash key name of `hash_key` and default range key name `range_key` with a default read/write capacity of 5. 
+- `create_table` creates a table with a default hash key name of `hash_key` ~~and default range key name `range_key`~~ with a default read/write capacity of 5. 
