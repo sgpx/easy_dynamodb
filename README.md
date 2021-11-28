@@ -67,4 +67,4 @@ A: Curiosity. I wanted to check if there are inconsistencies with the `Count` pr
 
 ### notes
 
-- `create_table` creates a table with a default hash key name of `hash_key` ~~and default range key name `range_key`~~ with a default read/write capacity of 5. 
+- `create_table` without any optional arguments creates a table with a default hash key name of `hash_key` ~~and default range key name `range_key`~~ with a default read/write capacity of 5. 
