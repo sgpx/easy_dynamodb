@@ -78,38 +78,65 @@ def count_all_items_alt(table_name, last_key=None, counter=0):
 
 
 def create_table(table_name,
-                       hash_key="hash_key",
-                       range_key="range_key",
-                       read_capacity_units=5,
-                       write_capacity_units=5):
-    return dynamodb_client.create_table(TableName=table_name,
-                                        KeySchema=[
-                                            {
+                 hash_key="hash_key",
+                 range_key=None,
+                 read_capacity_units=5,
+                 write_capacity_units=5):
+    if range_key:
+        return dynamodb_client.create_table(TableName=table_name,
+                                            KeySchema=[
+                                                {
+                                                    'AttributeName': hash_key,
+                                                    'KeyType': 'HASH'
+                                                },
+                                                {
+                                                    'AttributeName': range_key,
+                                                    'KeyType': 'RANGE'
+                                                },
+                                            ],
+                                            AttributeDefinitions=[
+                                                {
+                                                    'AttributeName': hash_key,
+                                                    'AttributeType': 'S'
+                                                },
+                                                {
+                                                    'AttributeName': range_key,
+                                                    'AttributeType': 'S'
+                                                },
+                                            ],
+                                            ProvisionedThroughput={
+                                                'ReadCapacityUnits':
+                                                read_capacity_units,
+                                                'WriteCapacityUnits':
+                                                write_capacity_units
+                                            })
+    else:
+        return dynamodb_client.create_table(TableName=table_name,
+                                            KeySchema=[{
                                                 'AttributeName': hash_key,
                                                 'KeyType': 'HASH'
-                                            },
-                                            {
-                                                'AttributeName': range_key,
-                                                'KeyType': 'RANGE'
-                                            },
-                                        ],
-                                        AttributeDefinitions=[
-                                            {
-                                                'AttributeName': hash_key,
-                                                'AttributeType': 'S'
-                                            },
-                                            {
-                                                'AttributeName': range_key,
-                                                'AttributeType': 'S'
-                                            },
-                                        ],
-                                        ProvisionedThroughput={
-                                            'ReadCapacityUnits':
-                                            read_capacity_units,
-                                            'WriteCapacityUnits':
-                                            write_capacity_units
-                                        })
+                                            }],
+                                            AttributeDefinitions=[{
+                                                'AttributeName':
+                                                hash_key,
+                                                'AttributeType':
+                                                'S'
+                                            }],
+                                            ProvisionedThroughput={
+                                                'ReadCapacityUnits':
+                                                read_capacity_units,
+                                                'WriteCapacityUnits':
+                                                write_capacity_units
+                                            })
 
 
 #====================================================================================
 
+
+def delete_table(table_name):
+    return dynamodb_client.delete_table(TableName=table_name)
+
+#====================================================================================
+
+def list_tables():
+    return dynamodb_client.list_tables().get("TableNames")

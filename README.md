@@ -34,6 +34,20 @@ import easy_dynamodb as edb
 edb.create_table("my_table")
 edb.create_table("my_second_table", hash_key="key1", range_key="key2")
 ```
+### Delete a table
+
+```
+edb.delete_table("my_table")
+```
+
+### List all tables
+
+```
+edb.list_tables()
+# returns a list of table names as output
+# like ["my_table","my_second_table"]
+```
+
 
 ---
 
